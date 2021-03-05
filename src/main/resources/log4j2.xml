@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d %-5p [%t] %c{1.}: %m%n"/>
+        </Console>
+        <Console name="Data" target="SYSTEM_OUT">
+            <PatternLayout pattern="### Data: %m%n"/>
+        </Console>
+        <Console name="Watermark" target="SYSTEM_OUT">
+            <PatternLayout pattern="### Watermark: %m%n"/>
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Logger name="Data" level="debug" additivity="false">
+            <AppenderRef ref="Data"/>
+        </Logger>
+        <Logger name="Watermark" level="debug" additivity="false">
+            <AppenderRef ref="Watermark"/>
+        </Logger>
+        <!--
+        <Logger name="org.apache.beam.sdk.util.WindowTracing" level="DEBUG">
+            <AppenderRef ref="Console"/>
+        </Logger>
+        -->
+        <Logger name="org.apache" level="WARN">
+            <AppenderRef ref="Console"/>
+        </Logger>
+        <Root level="INFO">
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>
